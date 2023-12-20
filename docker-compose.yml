@@ -1,0 +1,20 @@
+version: '3'
+services:
+  api-gateway:
+    build:
+      context: ./api-gateway
+    ports:
+      - 3000:3000
+    volumes:
+      - ./api-gateway:/app
+  service-1:
+    build:
+      context: ./service-1
+    volumes:
+      - ./service-1:/app
+  service-2:
+    build:
+      context: ./service-2
+    volumes:
+      - ./service-2:/app
+  # Добавьте другие сервисы в соответствии с вашим проектом
