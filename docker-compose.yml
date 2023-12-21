@@ -1,5 +1,6 @@
 version: '3.9'
 services:
+
   db:
     container_name: postgres
     image: postgres
@@ -83,7 +84,19 @@ services:
           memory: 500M
     depends_on:
       - db
-    
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nest-docker-postgres
+    environment:
+      - PORT=${PORT}
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+    volumes:
+      - ./src:/app/src   
 # volumes:
 #   data:
 #   pgadmin-data:

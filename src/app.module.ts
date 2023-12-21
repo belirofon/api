@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { CatsModule } from './cats/cats.module';
 
 @Module({
   imports: [
@@ -9,11 +10,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       port: 5432,
       username: 'postgres',
       password: 'postgres',
-      database: 'db',
+      database: 'postgres',
       entities: [],
       synchronize: true,
       autoLoadEntities: true,
     }),
+    CatsModule,
   ],
 })
 export class AppModule {}
